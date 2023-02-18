@@ -1,4 +1,4 @@
-# MSPR_JAVA : GoSecuri
+# GoSecuri
 
 Calvin Djafari
 
