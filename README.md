@@ -7,7 +7,9 @@ Calvin Djafari
 - build du code -> OK
 - exécution de tests unitaires (si le projet en fourni), et de tests statiques -> OK
 - génération d'un package -> OK
-- publication du package sur Nexus -> OK
+- publication du package sur Nexus -> OK (utilisation de plugin tels que : Nexus Artifact Uploader et Pipeline Utility Steps)
+
+preuve disponible dans le dossier : preuves
 
 # Run 
 
