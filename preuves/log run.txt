@@ -1,0 +1,506 @@
+Démarré par l'utilisateur admin
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Récuperation des sources)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/CalD2/gosecuri2.git # timeout=10
+Fetching upstream changes from https://github.com/CalD2/gosecuri2.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.31.1.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/CalD2/gosecuri2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision a21d0319d66138c90c8fff3f8bfe8d9c10995d67 (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f a21d0319d66138c90c8fff3f8bfe8d9c10995d67 # timeout=10
+ > git.exe branch -a -v --no-abbrev # timeout=10
+ > git.exe branch -D main # timeout=10
+ > git.exe checkout -b main a21d0319d66138c90c8fff3f8bfe8d9c10995d67 # timeout=10
+Commit message: "pom"
+ > git.exe rev-list --no-walk a21d0319d66138c90c8fff3f8bfe8d9c10995d67 # timeout=10
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2>java -version 
+java version "18.0.1.1" 2022-04-22
+Java(TM) SE Runtime Environment (build 18.0.1.1+2-6)
+Java HotSpot(TM) 64-Bit Server VM (build 18.0.1.1+2-6, mixed mode, sharing)
+
+C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2>mvn clean install -DskipTests  
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< gosecuri:gosecuri >--------------------------
+[INFO] Building gosecuri 0.0.1
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gosecuri ---
+[INFO] Deleting C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ gosecuri ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ gosecuri ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 12 source files to C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\classes
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ gosecuri ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 10 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ gosecuri ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 4 source files to C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\test-classes
+[INFO] 
+[INFO] --- surefire:3.0.0-M8:test (default-test) @ gosecuri ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.1.0:jar (default-jar) @ gosecuri ---
+[INFO] Building jar: C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\gosecuri-0.0.1.jar
+[INFO] 
+[INFO] --- shade:3.2.4:shade (default) @ gosecuri ---
+[INFO] Including commons-io:commons-io:jar:2.6 in the shaded jar.
+[INFO] Including org.freemarker:freemarker:jar:2.3.31 in the shaded jar.
+[INFO] Including junit:junit:jar:4.13.2 in the shaded jar.
+[INFO] Including org.hamcrest:hamcrest-core:jar:1.3 in the shaded jar.
+[WARNING] commons-io-2.6.jar, freemarker-2.3.31.jar, gosecuri-0.0.1.jar, hamcrest-core-1.3.jar, junit-4.13.2.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] maven-shade-plugin has detected that some class files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the class is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See http://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\gosecuri-0.0.1.jar with C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\gosecuri-0.0.1-shaded.jar
+[INFO] Dependency-reduced POM written at: C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\dependency-reduced-pom.xml
+[INFO] 
+[INFO] --- install:3.1.0:install (default-install) @ gosecuri ---
+[INFO] Installing C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\dependency-reduced-pom.xml to C:\Windows\system32\config\systemprofile\.m2\repository\gosecuri\gosecuri\0.0.1\gosecuri-0.0.1.pom
+[INFO] Installing C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\gosecuri-0.0.1.jar to C:\Windows\system32\config\systemprofile\.m2\repository\gosecuri\gosecuri\0.0.1\gosecuri-0.0.1.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.728 s
+[INFO] Finished at: 2023-02-19T01:52:14+01:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2>java -version 
+java version "18.0.1.1" 2022-04-22
+Java(TM) SE Runtime Environment (build 18.0.1.1+2-6)
+Java HotSpot(TM) 64-Bit Server VM (build 18.0.1.1+2-6, mixed mode, sharing)
+
+C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2>mvn test 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< gosecuri:gosecuri >--------------------------
+[INFO] Building gosecuri 0.0.1
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ gosecuri ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ gosecuri ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ gosecuri ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 10 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ gosecuri ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:3.0.0-M8:test (default-test) @ gosecuri ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running gosecuri.HtmlFactoryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.362 s - in gosecuri.HtmlFactoryTest
+[INFO] Running gosecuri.MaterialFactoryTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in gosecuri.MaterialFactoryTest
+[INFO] Running gosecuri.StaffFactoryTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in gosecuri.StaffFactoryTest
+[INFO] Running utils.UtilsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in utils.UtilsTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.929 s
+[INFO] Finished at: 2023-02-19T01:52:19+01:00
+[INFO] ------------------------------------------------------------------------
+Post stage
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Publish to Nexus Repository Manager)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+1
+[Pipeline] readMavenPom
+[Pipeline] echo
+gosecuri:gosecuri:jar:0.0.1
+[Pipeline] findFiles
+[Pipeline] echo
+gosecuri-0.0.1.jar target\gosecuri-0.0.1.jar false 2553148 1676767933828
+[Pipeline] fileExists
+[Pipeline] echo
+*** File: target\gosecuri-0.0.1.jar, group: gosecuri, packaging: jar, version 0.0.1
+[Pipeline] nexusArtifactUploader
+Uploading artifact gosecuri-0.0.1.jar started....
+GroupId: gosecuri
+ArtifactId: gosecuri
+Classifier: 
+Type: jar
+Version: 0.0.1
+File: gosecuri-0.0.1.jar
+Repository:gosecuri2
+Uploading artifact pom.xml started....
+GroupId: gosecuri
+ArtifactId: gosecuri
+Classifier: 
+Type: pom
+Version: 0.0.1
+File: pom.xml
+Repository:gosecuri2
+Uploading: http://0.0.0.0:8081/repository/gosecuri2/gosecuri/gosecuri/0.0.1/gosecuri-0.0.1.jar
+10 % completed (270 kB / 2.6 MB).
+20 % completed (516 kB / 2.6 MB).
+30 % completed (786 kB / 2.6 MB).
+40 % completed (1.0 MB / 2.6 MB).
+50 % completed (1.3 MB / 2.6 MB).
+60 % completed (1.5 MB / 2.6 MB).
+70 % completed (1.8 MB / 2.6 MB).
+80 % completed (2.1 MB / 2.6 MB).
+90 % completed (2.3 MB / 2.6 MB).
+100 % completed (2.6 MB / 2.6 MB).
+Uploaded: http://0.0.0.0:8081/repository/gosecuri2/gosecuri/gosecuri/0.0.1/gosecuri-0.0.1.jar (2.6 MB at 8.5 MB/s)
+Uploading: http://0.0.0.0:8081/repository/gosecuri2/gosecuri/gosecuri/0.0.1/gosecuri-0.0.1.pom
+Uploaded: http://0.0.0.0:8081/repository/gosecuri2/gosecuri/gosecuri/0.0.1/gosecuri-0.0.1.pom (2.3 kB at 23 kB/s)
+Uploading artifact gosecuri-0.0.1.jar completed.
+Uploading artifact pom.xml completed.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2>mvn verify sonar:sonar -D sonar.login=admin -D sonar.password=adminadmin -D sonar.organization=sonarqube -D sonar.projectKey=project -D sonar.binaries=target/classes 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< gosecuri:gosecuri >--------------------------
+[INFO] Building gosecuri 0.0.1
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.0:resources (default-resources) @ gosecuri ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ gosecuri ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.0:testResources (default-testResources) @ gosecuri ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 10 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ gosecuri ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:3.0.0-M8:test (default-test) @ gosecuri ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running gosecuri.HtmlFactoryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.395 s - in gosecuri.HtmlFactoryTest
+[INFO] Running gosecuri.MaterialFactoryTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in gosecuri.MaterialFactoryTest
+[INFO] Running gosecuri.StaffFactoryTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in gosecuri.StaffFactoryTest
+[INFO] Running utils.UtilsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in utils.UtilsTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.1.0:jar (default-jar) @ gosecuri ---
+[INFO] 
+[INFO] --- shade:3.2.4:shade (default) @ gosecuri ---
+[INFO] Including commons-io:commons-io:jar:2.6 in the shaded jar.
+[INFO] Including org.freemarker:freemarker:jar:2.3.31 in the shaded jar.
+[INFO] Including junit:junit:jar:4.13.2 in the shaded jar.
+[INFO] Including org.hamcrest:hamcrest-core:jar:1.3 in the shaded jar.
+[WARNING] commons-io-2.6.jar, freemarker-2.3.31.jar, gosecuri-0.0.1.jar, hamcrest-core-1.3.jar, junit-4.13.2.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] commons-io-2.6.jar, gosecuri-0.0.1.jar define 131 overlapping classes and resources: 
+[WARNING]   - META-INF/LICENSE.txt
+[WARNING]   - META-INF/NOTICE.txt
+[WARNING]   - META-INF/maven/commons-io/commons-io/pom.properties
+[WARNING]   - META-INF/maven/commons-io/commons-io/pom.xml
+[WARNING]   - org.apache.commons.io.ByteOrderMark
+[WARNING]   - org.apache.commons.io.ByteOrderParser
+[WARNING]   - org.apache.commons.io.Charsets
+[WARNING]   - org.apache.commons.io.CopyUtils
+[WARNING]   - org.apache.commons.io.DirectoryWalker
+[WARNING]   - org.apache.commons.io.DirectoryWalker$CancelException
+[WARNING]   - 121 more...
+[WARNING] freemarker-2.3.31.jar, gosecuri-0.0.1.jar define 1209 overlapping classes and resources: 
+[WARNING]   - META-INF/LICENSE
+[WARNING]   - freemarker.cache.AndMatcher
+[WARNING]   - freemarker.cache.ByteArrayTemplateLoader
+[WARNING]   - freemarker.cache.ByteArrayTemplateLoader$ByteArrayTemplateSource
+[WARNING]   - freemarker.cache.CacheStorage
+[WARNING]   - freemarker.cache.CacheStorageWithGetSize
+[WARNING]   - freemarker.cache.ClassTemplateLoader
+[WARNING]   - freemarker.cache.ConcurrentCacheStorage
+[WARNING]   - freemarker.cache.ConditionalTemplateConfigurationFactory
+[WARNING]   - freemarker.cache.FileExtensionMatcher
+[WARNING]   - 1199 more...
+[WARNING] gosecuri-0.0.1.jar, junit-4.13.2.jar define 353 overlapping classes and resources: 
+[WARNING]   - LICENSE-junit.txt
+[WARNING]   - junit.extensions.ActiveTestSuite
+[WARNING]   - junit.extensions.ActiveTestSuite$1
+[WARNING]   - junit.extensions.RepeatedTest
+[WARNING]   - junit.extensions.TestDecorator
+[WARNING]   - junit.extensions.TestSetup
+[WARNING]   - junit.extensions.TestSetup$1
+[WARNING]   - junit.framework.Assert
+[WARNING]   - junit.framework.AssertionFailedError
+[WARNING]   - junit.framework.ComparisonCompactor
+[WARNING]   - 343 more...
+[WARNING] gosecuri-0.0.1.jar, hamcrest-core-1.3.jar define 46 overlapping class and resource: 
+[WARNING]   - LICENSE.txt
+[WARNING]   - org.hamcrest.BaseDescription
+[WARNING]   - org.hamcrest.BaseMatcher
+[WARNING]   - org.hamcrest.Condition
+[WARNING]   - org.hamcrest.Condition$1
+[WARNING]   - org.hamcrest.Condition$Matched
+[WARNING]   - org.hamcrest.Condition$NotMatched
+[WARNING]   - org.hamcrest.Condition$Step
+[WARNING]   - org.hamcrest.CoreMatchers
+[WARNING]   - org.hamcrest.CustomMatcher
+[WARNING]   - 36 more...
+[WARNING] maven-shade-plugin has detected that some class files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the class is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See http://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\gosecuri-0.0.1.jar with C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\gosecuri-0.0.1-shaded.jar
+[INFO] Dependency-reduced POM written at: C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\dependency-reduced-pom.xml
+[INFO] 
+[INFO] -------------------------< gosecuri:gosecuri >--------------------------
+[INFO] Building gosecuri 0.0.1
+[INFO]   from dependency-reduced-pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar:3.9.1.2184:sonar (default-cli) @ gosecuri ---
+[INFO] User cache: C:\Windows\system32\config\systemprofile\.sonar\cache
+[INFO] SonarQube version: 9.9.0.65466
+[INFO] Default locale: "fr_FR", source code encoding: "windows-1252" (analysis is platform dependent)
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=440ms
+[INFO] Server id: 147B411E-AYZmZgeqknYXtawlmtfn
+[INFO] User cache: C:\Windows\system32\config\systemprofile\.sonar\cache
+[INFO] Load/download plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=285ms
+[INFO] Load/download plugins (done) | time=447ms
+[INFO] Process project properties
+[INFO] Process project properties (done) | time=19ms
+[INFO] Execute project builders
+[INFO] Execute project builders (done) | time=7ms
+[INFO] Project key: project
+[INFO] Base dir: C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2
+[INFO] Working dir: C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\sonar
+[INFO] Load project settings for component key: 'project'
+[INFO] Load project settings for component key: 'project' (done) | time=277ms
+[INFO] Auto-configuring with CI 'Jenkins'
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=348ms
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=6860ms
+[INFO] Load analysis cache
+[INFO] Load analysis cache (340 bytes) | time=143ms
+[WARNING] Property 'sonar.password' is deprecated. It will not be supported in the future. Please instead use the 'sonar.login' parameter with a token.
+[INFO] Load project repositories
+[INFO] Load project repositories (done) | time=169ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] 17 files indexed
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Quality profile for java: Sonar way
+[INFO] Quality profile for xml: Sonar way
+[INFO] ------------- Run sensors on module gosecuri
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=182ms
+[INFO] Sensor JavaSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 11
+[INFO] JavaClasspath initialization
+[INFO] JavaClasspath initialization (done) | time=7ms
+[INFO] JavaTestClasspath initialization
+[INFO] JavaTestClasspath initialization (done) | time=1ms
+[INFO] Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[INFO] Using ECJ batch to parse 12 Main java source files with batch size 98 KB.
+[INFO] Starting batch processing.
+[INFO] The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 12 files.
+[INFO] Using ECJ batch to parse 4 Test java source files with batch size 98 KB.
+[INFO] Starting batch processing.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 4 files.
+[INFO] No "Generated" source files to scan.
+[INFO] Sensor JavaSensor [java] (done) | time=2794ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[INFO] No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=3ms
+[INFO] Sensor CSS Rules [javascript]
+[INFO] No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[INFO] Sensor CSS Rules [javascript] (done) | time=0ms
+[INFO] Sensor C# Project Type Information [csharp]
+[INFO] Sensor C# Project Type Information [csharp] (done) | time=1ms
+[INFO] Sensor C# Analysis Log [csharp]
+[INFO] Sensor C# Analysis Log [csharp] (done) | time=23ms
+[INFO] Sensor C# Properties [csharp]
+[INFO] Sensor C# Properties [csharp] (done) | time=0ms
+[INFO] Sensor SurefireSensor [java]
+[INFO] parsing [C:\ProgramData\Jenkins\.jenkins\workspace\gosecuri2\target\surefire-reports]
+[INFO] Sensor SurefireSensor [java] (done) | time=143ms
+[INFO] Sensor HTML [web]
+[INFO] Sensor HTML [web] (done) | time=2ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=228ms
+[INFO] Sensor TextAndSecretsSensor [text]
+[INFO] 17 source files to be analyzed
+[INFO] 17/17 source files have been analyzed
+[INFO] Sensor TextAndSecretsSensor [text] (done) | time=31ms
+[INFO] Sensor VB.NET Project Type Information [vbnet]
+[INFO] Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+[INFO] Sensor VB.NET Analysis Log [vbnet]
+[INFO] Sensor VB.NET Analysis Log [vbnet] (done) | time=23ms
+[INFO] Sensor VB.NET Properties [vbnet]
+[INFO] Sensor VB.NET Properties [vbnet] (done) | time=0ms
+[INFO] Sensor IaC Docker Sensor [iac]
+[INFO] 0 source files to be analyzed
+[INFO] 0/0 source files have been analyzed
+[INFO] Sensor IaC Docker Sensor [iac] (done) | time=78ms
+[INFO] ------------- Run sensors on project
+[INFO] Sensor Analysis Warnings import [csharp]
+[INFO] Sensor Analysis Warnings import [csharp] (done) | time=1ms
+[INFO] Sensor Zero Coverage Sensor
+[INFO] Sensor Zero Coverage Sensor (done) | time=19ms
+[INFO] Sensor Java CPD Block Indexer
+[INFO] Sensor Java CPD Block Indexer (done) | time=30ms
+[INFO] SCM Publisher SCM provider for this project is: git
+[INFO] SCM Publisher 1 source file to be analyzed
+[INFO] SCM Publisher 1/1 source file have been analyzed (done) | time=497ms
+[INFO] CPD Executor 2 files had no CPD blocks
+[INFO] CPD Executor Calculating CPD for 10 files
+[INFO] CPD Executor CPD calculation finished (done) | time=19ms
+[INFO] Analysis report generated in 126ms, dir size=181.5 kB
+[INFO] Analysis report compressed in 594ms, zip size=57.1 kB
+[INFO] Analysis report uploaded in 202ms
+[INFO] ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=project
+[INFO] Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] More about the report processing at http://localhost:9000/api/ce/task?id=AYZnKLh7knYXtawlm3ZX
+[INFO] Analysis total time: 17.228 s
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.423 s
+[INFO] Finished at: 2023-02-19T01:52:47+01:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
