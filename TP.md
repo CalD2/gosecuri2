@@ -19,8 +19,7 @@ sonar.password=adminadmin // login
 sonar.organization=sonarqube // id d'autentification pour enregistrer dans sonarqube  
 
 
-
-preuves disponibles dans le dossier : preuves
+preuves disponibles dans le dossier : preuves (trace d'execution et de config) 
 
 # Run 
 
