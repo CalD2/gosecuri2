@@ -96,8 +96,11 @@ pipeline {
         stage('SonarQube Analysis') {
             steps 
             {
-                bat """ mvn verify sonar:sonar -D sonar.login=admin -D sonar.password=adminadmin -D sonar.organization=sonarqube -D sonar.projectKey=project -D sonar.binaries=target/classes
+                withSonarQubeEnv('SonarQubeServ')
+                {
+                     bat """ mvn verify sonar:sonar -D sonar.login=admin -D sonar.password=adminadmin -D sonar.organization=sonarqube -D sonar.projectKey=project -D sonar.binaries=target/classes
                 """
+                }
             }
         }
         
