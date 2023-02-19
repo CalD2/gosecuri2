@@ -7,9 +7,20 @@ Calvin Djafari
 - build du code -> OK
 - exécution de tests unitaires (si le projet en fourni), et de tests statiques -> OK
 - génération d'un package -> OK
-- publication du package sur Nexus -> OK (utilisation de plugin tels que : Nexus Artifact Uploader et Pipeline Utility Steps)
+- publication du package sur Nexus -> OK (utilisation de plugin tels que : Nexus Artifact Uploader et Pipeline Utility Steps)  
+Variables importantes dans le JenkinsFile à adapter potentiellement à votre serveur :  
+NEXUS_URL = "0.0.0.0:8081" // adresse du serveur  
+NEXUS_REPOSITORY = "gosecuri2" // nom du repo  
+NEXUS_CREDENTIAL_ID = "NEXUS_CRED" // login (définie dans les utilisateurs Jenkins pour se connecter à Nexus)  
+- SonarQube mis en place -> OK  (utilisation du plugin : SonarQube Scanner for Jenkins)  
 
-preuve disponible dans le dossier : preuves
+Variables importantes dans le script à adapter potentiellement à votre serveur  :   
+sonar.login=admin // login   
+sonar.password=adminadmin // login   
+sonar.organization=sonarqube // id d'autentification pour enregistrer dans sonarqube  
+
+
+preuves disponibles dans le dossier : preuves (trace d'execution et de config) 
 
 # Run 
 
