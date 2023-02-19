@@ -12,6 +12,8 @@ pipeline {
             NEXUS_URL = "0.0.0.0:8081"
             NEXUS_REPOSITORY = "gosecuri2"
             NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
+            
+            SCANNER_HOME = tool 'sonarqube'
         }
     stages {
         stage("Récuperation des sources"){
@@ -26,7 +28,7 @@ pipeline {
                 bat """
                 java -version
 
-                mvn clean install -DskipTests
+                mvn clean install -DskipTests 
                 """
             }
         }
@@ -91,22 +93,13 @@ pipeline {
             }
         }
         
-        
-        /*
-        
-        stage("Construction du site web"){
-            steps{
-                bat """
-                java -version
-
-                del html\\staffs\\* /S /Q
-                java -jar target/gosecuri-0.0.1.jar depot/ depot/idcards/ depot/staffs/
+        stage('SonarQube Analysis') {
+            steps 
+            {
+                bat """ mvn verify sonar:sonar -D sonar.login=admin -D sonar.password=adminadmin -D sonar.organization=sonarqube -D sonar.projectKey=project -D sonar.binaries=target/classes
                 """
             }
-
         }
-        
-        */
         
     }
 
